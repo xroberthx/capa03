@@ -46,6 +46,16 @@ public class WelcomeRest {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+    @PostMapping(value = "/devuelveEjemplo02Post", produces = APPLICATION_JSON_VALUE)
+    public ResponseEntity<Ejemplo> devuelveEjemplo02Post(@RequestBody Ejemplo ejemplo){
+        ejemplo.setApellidos(ejemplo.getApellidos() + " FINAL 02");
+        ejemplo.setApellidosNombres(ejemplo.getApellidos() + " , " + ejemplo.getNombres());
+        ejemplo.setDireccion("Av. Del Aire # 123");
+        ejemplo.setRuc("20305948644");
+        return Optional.ofNullable(ejemplo).map(bean -> new ResponseEntity<>(bean, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
     @GetMapping(value = "/devuelveFechaActual", produces = APPLICATION_JSON_VALUE)
     public String devuelveFechaActual(){
         Date fechaActual = DateUtils.obtenerFechaActual();

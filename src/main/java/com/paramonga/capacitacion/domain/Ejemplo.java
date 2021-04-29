@@ -12,4 +12,5 @@ public class Ejemplo {
     private String apellidos;
     private String apellidosNombres;
     private String direccion;
+    private String ruc;
 }
